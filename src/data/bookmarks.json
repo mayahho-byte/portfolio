@@ -1,0 +1,46 @@
+[
+  {
+    "id": "work",
+    "label": "業務ツール",
+    "bookmarks": [
+      {
+        "id": "project-1a",
+        "label": "勤怠・有給管理",
+        "url": "https://github.com/mayahho-byte",
+        "category": "work",
+        "displayMode": "blank",
+        "description": "勤怠打刻・有給申請・承認管理を行う業務システム",
+        "tags": ["React", "TypeScript", "Node.js", "PostgreSQL"]
+      },
+      {
+        "id": "project-1b",
+        "label": "給与計算システム",
+        "url": "https://github.com/mayahho-byte",
+        "category": "work",
+        "displayMode": "blank",
+        "description": "給与計算・明細出力システム",
+        "tags": ["React", "TypeScript", "Node.js"]
+      }
+    ]
+  },
+  {
+    "id": "profile",
+    "label": "プロフィール",
+    "bookmarks": [
+      {
+        "id": "github",
+        "label": "GitHub",
+        "url": "https://github.com/mayahho-byte",
+        "category": "profile",
+        "displayMode": "blank"
+      },
+      {
+        "id": "about",
+        "label": "About Me",
+        "url": "/about",
+        "category": "profile",
+        "displayMode": "blank"
+      }
+    ]
+  }
+]
