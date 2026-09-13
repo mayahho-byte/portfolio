@@ -1,19 +1,22 @@
+import { useRef } from 'react'
 import type { Category } from '../types/index'
 
 type Props = {
   categories: Category[]
   selectedCategory: string | null
-  onSelectCategory: (id: string | null) => void
+  onSelectCategory: (id: string | null, left: number) => void
 }
 
 export default function BookmarkBar({ categories, selectedCategory, onSelectCategory }: Props) {
+  const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({})
 
   function handleClick(id: string) {
-    // 同じカテゴリを再クリックしたらサイドバーを閉じる
     if (selectedCategory === id) {
-      onSelectCategory(null)
+      onSelectCategory(null, 0)
     } else {
-      onSelectCategory(id)
+      const btn = buttonRefs.current[id]
+      const left = btn ? btn.getBoundingClientRect().left : 0
+      onSelectCategory(id, left)
     }
   }
 
@@ -22,6 +25,7 @@ export default function BookmarkBar({ categories, selectedCategory, onSelectCate
       {categories.map(category => (
         <button
           key={category.id}
+          ref={el => { buttonRefs.current[category.id] = el }}
           onClick={() => handleClick(category.id)}
           className={`
             px-3 py-1 rounded text-sm transition-colors
