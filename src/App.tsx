@@ -1,20 +1,30 @@
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import BookmarkBar from './components/BookmarkBar'
 import Sidebar from './components/Sidebar'
+import bookmarksData from './data/bookmarks.json'
+import type { Category } from './types/index'
+
+const categories = bookmarksData as Category[]
 
 export default function App() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+
+  const currentCategory = categories.find(c => c.id === selectedCategory) ?? null
+
   return (
     <div className="flex flex-col h-screen">
-      {/* 上部：BookmarkBar */}
-      <BookmarkBar />
+      <BookmarkBar
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onSelectCategory={setSelectedCategory}
+      />
 
-      {/* 下部：SidebarとメインエリアをHorizontalに並べる */}
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
+        <Sidebar category={currentCategory} />
 
-        {/* メインエリア：ルーティングで切り替わる部分 */}
         <main className="flex-1 overflow-auto bg-white">
           <Routes>
             <Route path="/" element={<HomePage />} />
