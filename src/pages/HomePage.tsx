@@ -1,6 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import ShortcutBar from '../components/ShortcutBar'
 
+type Props = {
+  onOpenModal: () => void
+}
+
 type Project = {
   id: string
   title: string
@@ -40,12 +44,8 @@ const projects: Project[] = [
   },
 ]
 
-export default function HomePage() {
+export default function HomePage({ onOpenModal }: Props) {
   const navigate = useNavigate()
-
-  function handleWalkthroughClick() {
-    console.log('Walkthrough clicked')
-  }
 
   return (
     <div className="min-h-full bg-gray-50 flex flex-col items-center pt-6 px-8">
@@ -71,7 +71,7 @@ export default function HomePage() {
 
           {/* Walkthroughカード（左・大） */}
           <button
-            onClick={handleWalkthroughClick}
+            onClick={onOpenModal}
             className="w-80 bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-left hover:shadow-md transition-shadow flex flex-col justify-between"
           >
             <div>
@@ -80,10 +80,10 @@ export default function HomePage() {
                 How to use this portfolio
               </h2>
               <p className="text-xs text-gray-600 leading-relaxed mb-2">
-                This is a portfolio built as a custom browser UI. My profile is real. The apps and webpages are self-built practice projects. The annotation tool is a mock recreated from real work experience.
+                This portfolio is designed as an interactive browser-style interface. The featured web applications and tools were built from scratch based on real-world business challenges and workflows. Feel free to explore the interactive demos and source code.
               </p>
               <p className="text-xs text-gray-600 leading-relaxed">
-                こちらはカスタムブラウザ風UIで作ったポートフォリオです。私自身のプロフィールは本物ですが、業務ツールとウェブサイトは練習として自作したものです。アノテーションツールは実務経験をもとに再現したものとなっております。
+                本ポートフォリオは、カスタムブラウザUI上で各種Webアプリケーションを操作・体験いただける構成になっています。掲載している業務ツールやWebサイトは、実務経験・現場課題をもとに要件定義から実装までをフルスタックで再構築した自作プロジェクトです。ぜひ各アプリのタブを開いて実際の動作をご確認ください。
               </p>
             </div>
             <span className="text-xs text-blue-500 hover:text-blue-700 mt-4 block">
