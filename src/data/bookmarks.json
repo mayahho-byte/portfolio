@@ -1,7 +1,7 @@
 [
   {
     "id": "work",
-    "label": "業務ツール",
+    "label": "Work & Payroll",
     "bookmarks": [
       {
         "id": "project-1a",
@@ -25,7 +25,7 @@
   },
   {
     "id": "profile",
-    "label": "プロフィール",
+    "label": "My Profile",
     "bookmarks": [
       {
         "id": "github",
